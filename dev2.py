@@ -1,2 +1,1 @@
 print ('pinto mole')
-
