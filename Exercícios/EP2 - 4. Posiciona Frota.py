@@ -10,9 +10,9 @@ def posiciona_frota(navios):
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
-
-  for barco in navios:
-      if 
-      for pos in barco:
-
-      
+    
+    for nome, posicao in navios.items():
+        for p in posicao:
+            for local in p:
+                tabuleiro[local[0]][local[1]] = 1
+    return tabuleiro
