@@ -1,3 +1,4 @@
+# Quantas embarcações afundadas?
 def afundados(frota, tabuleiro):
     num_afundados = 0
     for embarcacao, posicoes in frota.items():
