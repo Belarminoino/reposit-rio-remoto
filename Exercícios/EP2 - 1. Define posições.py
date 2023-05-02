@@ -1,3 +1,4 @@
+# Define posições
 def define_posicoes (linha,coluna,orientacao,tamanho):
     posicoes = []
     if orientacao == "vertical":
