@@ -64,4 +64,4 @@ for nome in ['porta-aviões', 'navio-tanque', 'navio-tanque', 'contratorpedeiro'
         else:
             print("Esta posição não está válida!")
 
-print(frota) 
+print(frota)
