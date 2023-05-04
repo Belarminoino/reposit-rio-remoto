@@ -1,13 +1,13 @@
 # Define posições
 def define_posicoes (linha,coluna,orientacao,tamanho):
     posicoes = []
-    if orientacao == "vertical":
+    if orientacao == 1:
         posicoes.append([linha,coluna])
         if tamanho > 1:
             for i in range(1, tamanho):
                 posicoes.append([linha + i,coluna])
     
-    elif orientacao == 'horizontal':
+    elif orientacao == 2:
         posicoes.append([linha,coluna])
         if tamanho > 1:
             for i in range(1, tamanho):
@@ -36,6 +36,43 @@ def posicao_valida(frota, linha, coluna, orientacao, tamanho):
                     return False
     return True
 
+def posiciona_frota(navios):
+    tabuleiro = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+    
+    for nome, posicao in navios.items():
+        for p in posicao:
+            for local in p:
+                tabuleiro[local[0]][local[1]] = 1
+    return tabuleiro
+# Faz Jogada
+def faz_jogada (tabuleiro,linha, coluna):
+    if tabuleiro[linha][coluna] == 1:
+        tabuleiro[linha][coluna]= 'X'
+    elif tabuleiro[linha][coluna] == 0:
+        tabuleiro[linha][coluna]= '-'
+    return tabuleiro
+# Quantas embarcações afundadas?
+def afundados(frota, tabuleiro):
+    num_afundados = 0
+    for embarcacao, posicoes in frota.items():
+        for posicao in posicoes:
+            for linha, coluna in posicao:
+                if tabuleiro[linha][coluna] != 'X':
+                    break
+            else:
+                num_afundados += 1
+    return num_afundados
+
 # definindo dicionário da frota
 embarcacoes = {'porta-aviões': 4, 'navio-tanque': 3, 'contratorpedeiro': 2, 'submarino': 1}
 
@@ -43,8 +80,9 @@ frota = {'porta-aviões': [], 'navio-tanque': [], 'contratorpedeiro': [], 'subma
 
 for nome in ['porta-aviões', 'navio-tanque', 'navio-tanque', 'contratorpedeiro', 'contratorpedeiro', 'contratorpedeiro', 'submarino', 'submarino', 'submarino', 'submarino']:
     tamanho = embarcacoes[nome]
-    print(f"Insira as informações referentes ao navio {nome} que possui tamanho {tamanho}")
+    
     while True:
+        print(f"Insira as informações referentes ao navio {nome} que possui tamanho {tamanho}")
         linha = int(input("Linha: "))
         coluna = int(input("Coluna: "))
         if nome != "submarino":
@@ -53,11 +91,10 @@ for nome in ['porta-aviões', 'navio-tanque', 'navio-tanque', 'contratorpedeiro'
             
         else:
             posicoes = [linha, coluna]
-            orientacao = None
+            orientacao = 1
             
         if posicao_valida(frota, linha, coluna, orientacao, tamanho):
-            preenche_frota(frota, nome, linha, coluna, orientacao, tamanho)
-            frota[nome].append(posicoes)
+            frota =  preenche_frota(frota, nome, linha, coluna, orientacao, tamanho)
             break
             
             
