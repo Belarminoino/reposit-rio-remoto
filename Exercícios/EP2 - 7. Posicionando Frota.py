@@ -15,12 +15,14 @@ def define_posicoes (linha,coluna,orientacao,tamanho):
     return posicoes
 
 # Preenche Frota
-def preenche_frota (frota,nome,linha,coluna,orientacao,tamanho):
+def preenche_frota(frota, nome, linha, coluna, orientacao, tamanho):
     if nome not in frota.keys():
-        frota[nome] = [define_posicoes(linha,coluna,orientacao,tamanho)]
+        frota[nome] = [define_posicoes(linha, coluna, orientacao, tamanho)]
     else:
-        frota[nome].append(define_posicoes(linha,coluna,orientacao,tamanho))
+        frota[nome].append(define_posicoes(linha, coluna, orientacao, tamanho))
     return frota
+
+
 
 # valida posicao
 
