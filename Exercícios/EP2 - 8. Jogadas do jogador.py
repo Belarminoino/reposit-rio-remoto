@@ -174,4 +174,4 @@ while jogando:
             tabuleiro_oponente = faz_jogada(tabuleiro_oponente,linha_atacar,coluna_atacar)
             pergunta_ataque = False   
         else:
-            print('A posição linha {0} e coluna {1} já foi informada anteriormente!'.format(linha_atacar,coluna_atacar))
+            print('A posição linha {0} e coluna {1} já foi informada anteriormente!'.format(linha_atacar,coluna_atacar)) 
